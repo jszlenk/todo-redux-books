@@ -4,13 +4,16 @@ import './BookItem.css'
 
 type Props = {
     book: Book;
-    removeBook: (book: Book) => void
+    removeBook: (id: string) => void;
 }
 
-const BookItem: FC<Props> = ({ book, removeBook  }) => {
-    return <li className="book-item">{`${book.title} by ${book.author}, ${book.price}$`}
-        <button type="button" onClick={() => removeBook(book)}>Remove</button>
-    </li>
+const BookItem: FC<Props> = ({ book, removeBook }) => {
+    return (
+        <li className="book-item">
+            {book.title} by {book.author}, ${book.price}
+            <button onClick={() => removeBook(book.id)}>Remove</button>{" "}
+        </li>
+    );
 };
 
 export default BookItem;
